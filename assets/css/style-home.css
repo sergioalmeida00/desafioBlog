@@ -1,0 +1,215 @@
+:root {
+    --green: #43AC29;
+    --red: #F50105;
+    --orange: #FF9E01;
+    --header-color: hsla(0, 0%, 100%, 1);
+    --header-gradient: linear-gradient(90deg, #574AE8 0%, #3EA1DB 100%);
+    --background-article: hsla(0, 0%, 100%, 1);
+    --background-main: #F3F5F7;
+    --icon-heart: #8257E6;
+    --radius: 5px;
+    --input-gradient: rgba(255, 255, 255, 0.2);
+    --title: hsla(0, 0%, 19%, 1);
+    --paragraph: hsla(0, 0%, 71%, 1);
+    --font: 'Lexend Deca', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: var(--font);
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#header {
+    height: 15rem;
+    background: var(--header-gradient);
+}
+
+main {
+    background-color: var(--background-main);
+}
+
+
+/* CONTAINER */
+
+.container {
+    max-width: 65rem;
+    margin: 0 auto;
+    padding: 2.5rem 1rem;
+}
+
+
+/* HEADER */
+
+#header .container {
+    display: flex;
+    flex-direction: column;
+    gap: 4.56rem;
+    color: var(--header-color);
+}
+
+#header .title a {
+    color: var(--header-color);
+}
+
+#header .title {
+    display: flex;
+    justify-content: space-between;
+}
+
+#header .search {
+    position: relative;
+}
+
+#header .search input {
+    position: absolute;
+    top: 0;
+    background: var( --input-gradient);
+    border: none;
+    border-radius: var(--radius);
+    width: 100%;
+    outline: none;
+    height: 2rem;
+    padding: 0 1rem 0 2.5rem;
+    color: var(--gray);
+}
+
+#header .search span {
+    position: absolute;
+    top: .3rem;
+    left: 2.5rem;
+    display: inline-block;
+    transition: .7s;
+    pointer-events: none;
+}
+
+#header .search input:focus~span,
+#header .search input:valid~span {
+    transform: translateX(-35px) translateY(-32px);
+    font: 400 .8rem var(--font);
+}
+
+#header .search i {
+    position: absolute;
+    margin: 0 auto;
+    left: 1rem;
+    top: 8px;
+}
+
+
+/* ARTICLES  */
+
+.container article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.4rem 1.5rem;
+    border-radius: var(--radius);
+    background-color: var(--background-article);
+    margin-bottom: 3.125rem;
+}
+
+.container article .image img {
+    /* max-width: 100%; */
+    width: 9rem;
+    height: 13.25rem;
+    border-radius: var(--radius);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.9);
+}
+
+.container article header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.container article .info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.container article .info span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    transition: .7s;
+    background-color: var(--background-main);
+    border-radius: var(--radius);
+}
+
+.container article .info span.green {
+    color: var(--green);
+}
+
+.container article .info span.red {
+    color: var(--red);
+}
+
+.container article .info span.orange {
+    color: var(--orange);
+}
+
+.container article p {
+    color: var(--paragraph);
+    font: 400 1rem var(--font);
+}
+
+.container article h2 {
+    color: var(--title);
+    font: 600 1.5rem var(--font);
+}
+
+
+/* BTN TOPO */
+
+main .topo {
+    background-color: var(--icon-heart);
+    padding: .7rem;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    border-radius: var(--radius);
+    color: var(--header-color);
+    opacity: 0;
+    visibility: hidden;
+    transition: .7s;
+    transform: translateY(150%);
+}
+
+main .topo.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* MEDIA QUERY  */
+
+@media(max-width: 650px) {
+    .container article .image img {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+    }
+    .container article p {
+        text-align: justify;
+    }
+    .container article {
+        display: flex;
+        flex-direction: column;
+    }
+    .container article header:nth-child(1) {
+        order: 1;
+    }
+}
